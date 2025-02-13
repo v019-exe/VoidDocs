@@ -253,6 +253,24 @@
   
 
       
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../hardware/arquitectura/" class="md-tabs__link">
+          
+  
+  Fundamentos del hardware
+
+        </a>
+      </li>
+    
+  
+
+      
     </ul>
   </div>
 </nav>
@@ -824,6 +842,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#request-superglobals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Request Superglobals
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1070,6 +1097,120 @@
           </ul>
         </nav>
       
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Fundamentos del hardware
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Fundamentos del hardware
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hardware/arquitectura/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Arquitectura de sistemas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hardware/entornos_operativos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Entornos operativos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hardware/aplicaciones_generales/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Aplicaciones de propósito general
+    
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -1915,6 +2056,64 @@ Este bucle imprimirá los valores "rojo", "verde" y "azul".</p>
 </span><span id="__span-43-4"><a id="__codelineno-43-4" name="__codelineno-43-4"></a><span class="cp">?&gt;</span>
 </span></code></pre></div></td></tr></table></div>
 https://www.php.net/manual/es/indexes.functions.php</p>
+<h3 id="request-superglobals">Request Superglobals</h3>
+<h1 id="request-superglobals-en-php">Request Superglobals en PHP</h1>
+<p>En PHP, los <em>request superglobals</em> son variables predefinidas que permiten acceder a la información proveniente de diversas fuentes externas, como formularios, cookies, URL y más. Estos son accesibles globalmente en todo el script PHP. A continuación, un resumen de los más utilizados:</p>
+<ol>
+<li><strong><code>$_GET</code></strong>: 
+   Contiene los datos enviados a través de la URL, generalmente mediante el método HTTP GET. Los valores se envían como parámetros en la cadena de consulta.</li>
+<li>
+<p>Ejemplo: <code>$_GET['nombre']</code> obtiene el valor de <code>nombre</code> de la URL.</p>
+</li>
+<li>
+<p><strong><code>$_POST</code></strong>: 
+   Almacena los datos enviados mediante el método HTTP POST, generalmente en formularios. Es más seguro para enviar grandes cantidades de datos que <code>$_GET</code>, ya que no se muestran en la URL.</p>
+</li>
+<li>
+<p>Ejemplo: <code>$_POST['usuario']</code> obtiene el valor de <code>usuario</code> de un formulario enviado.</p>
+</li>
+<li>
+<p><strong><code>$_REQUEST</code></strong>: 
+   Contiene tanto los datos de <code>$_GET</code>, <code>$_POST</code>, como de <code>$_COOKIE</code>. Es un "superglobal" que combina estos tres arrays, pero se recomienda usar <code>$_GET</code> o <code>$_POST</code> específicamente, ya que <code>$_REQUEST</code> puede ser menos seguro.</p>
+</li>
+<li>
+<p>Ejemplo: <code>$_REQUEST['email']</code> obtiene el valor del parámetro <code>email</code> de cualquiera de las tres fuentes.</p>
+</li>
+<li>
+<p><strong><code>$_SERVER</code></strong>: 
+   Almacena información sobre los servidores y el entorno de ejecución, como cabeceras HTTP, información del script, método de petición, etc.</p>
+</li>
+<li>
+<p>Ejemplo: <code>$_SERVER['HTTP_USER_AGENT']</code> obtiene el agente de usuario (el navegador).</p>
+</li>
+<li>
+<p><strong><code>$_FILES</code></strong>: 
+   Contiene los datos de los archivos subidos a través de un formulario HTML con el método <code>POST</code>. Se utiliza para acceder a los detalles de los archivos, como el nombre, tamaño y tipo de archivo.</p>
+</li>
+<li>
+<p>Ejemplo: <code>$_FILES['archivo']['name']</code> obtiene el nombre del archivo subido.</p>
+</li>
+<li>
+<p><strong><code>$_ENV</code></strong>: 
+   Contiene variables de entorno del sistema, como configuraciones de servidor o configuraciones del sistema operativo.</p>
+</li>
+<li>
+<p>Ejemplo: <code>$_ENV['PATH']</code> obtiene el valor de la variable de entorno <code>PATH</code>.</p>
+</li>
+<li>
+<p><strong><code>$_COOKIE</code></strong>: 
+   Almacena los valores de las cookies enviadas por el navegador. Se utiliza para leer los valores de las cookies configuradas previamente.</p>
+</li>
+<li>
+<p>Ejemplo: <code>$_COOKIE['user']</code> obtiene el valor de la cookie <code>user</code>.</p>
+</li>
+<li>
+<p><strong><code>$_SESSION</code></strong>: 
+   Almacena datos sobre una sesión de usuario. Es útil para mantener la información entre diferentes páginas durante una sesión en particular.</p>
+</li>
+<li>Ejemplo: <code>$_SESSION['username']</code> obtiene el valor almacenado de <code>username</code> en la sesión.</li>
+</ol>
+<p>Cada uno de estos superglobales tiene un propósito específico y permite interactuar con la entrada y el entorno del servidor de manera eficiente. Es importante siempre validar y sanitizar los datos provenientes de estas fuentes para evitar riesgos de seguridad, como inyecciones de SQL o XSS.</p>
 
 
 
